@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 
 
-app.use("/", airportController)
+app.use("/flights", airportController)
 
 
 
