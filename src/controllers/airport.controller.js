@@ -34,4 +34,14 @@ router.get("/:id", async (req, res) => {
     }
 })
 
+router.get("/:start/:end", async (req, res) => {
+    try {
+        let airports = await Airport.find({ $and: [{ start: req.params.start }, { end: req.params.end }] }).lean().exec()
+        return res.status(200).send(airports)
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+})
+
+
 module.exports = router;
